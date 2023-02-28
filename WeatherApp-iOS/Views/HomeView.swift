@@ -8,22 +8,25 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var tabSelection = 1
+    
     var body: some View {
-        TabView {
-            MainView().tabItem {
-                Label("", systemImage: "house")
-            }
+        TabView(selection: $tabSelection) {
+            
             
             SearchView().tabItem {
                 Label("", systemImage: "magnifyingglass")
+                    
             }
+            
+            MainView().tabItem {
+                Label("", systemImage: "house")
+            }
+           // .font(.system(size: ))
+            .tag(1)
             
             BookMarkView().tabItem {
                 Label("", systemImage: "bookmark")
-            }
-            
-            AccountView().tabItem {
-                Label("", systemImage: "person")
             }
             
         }

@@ -64,11 +64,11 @@ struct MainView: View {
                 VStack{
                     HStack(spacing: 50){
                         VStack{
-                            Image(systemName: "cloud.sun.rain")
+                            Image(systemName: "cloud.bolt")
                                 .font(.system(size: 16))
                                 .foregroundColor(Color.white)
                             
-                            Text("Vavuniya")
+                            Text("Galle")
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 16))
                             
@@ -79,13 +79,14 @@ struct MainView: View {
                                 .padding(.bottom)
                                 .bold()
                         }
+                        .frame(maxWidth: 100, maxHeight: 100)
                         
                         VStack{
                             Image(systemName: "sun.min.fill")
                                 .font(.system(size: 16))
                                 .foregroundColor(Color.white)
                             
-                            Text("Vavuniya")
+                            Text("Kandy")
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 16))
                             
@@ -94,14 +95,20 @@ struct MainView: View {
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 16))
                                 .padding(.bottom)
+                                .bold()
                         }
+                        .frame(maxWidth: 100, maxHeight: 100)
+                        
                         
                         VStack{
+                            
+                           // let weatherSecondaryData = networkStore.weatherData
+
                             Image(systemName: "cloud.bolt")
                                 .font(.system(size: 16))
                                 .foregroundColor(Color.white)
                             
-                            Text("Vavuniya")
+                            Text("Colombo")
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 16))
                             
@@ -110,12 +117,15 @@ struct MainView: View {
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 16))
                                 .padding(.bottom)
+                                .bold()
                         }
+                        .frame(maxWidth: 100, maxHeight: 100)
                     }
                     .padding(.leading)
                     .padding(.trailing)
                     .padding(.bottom)
                 }
+//                .frame(width: 500,height: 125)
 
                 
             }
