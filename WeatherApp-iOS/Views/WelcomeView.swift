@@ -15,19 +15,20 @@ struct WelcomeView: View {
     var body: some View {
         NavigationView{
             VStack{
-                VStack{
-                    Text("Welcome to the weather App")
-                        .bold()
-                        .font(.title)
-                    
-                    Text("Please Share your current location to get the weather in your area")
-                        .padding()
-                }
+//                VStack(spacing: 20){
+//                    Text("Welcome to the weather App")
+//                        .bold()
+//                        .font(.title)
+//
+//                    Text("Please Share your current location to get the weather in your area")
+//                }
+//
+//                .multilineTextAlignment(.center)
+//                .padding(.leading,50)
+//                .padding(.trailing,50)
+//                .padding(.bottom,400)
                 
-                .multilineTextAlignment(.center)
-                .padding()
-                
-                VStack{
+                VStack(spacing: 150){
                     
                     NavigationLink(destination: HomeView()) {
                         Text("Get Start")
@@ -39,13 +40,16 @@ struct WelcomeView: View {
                             .cornerRadius(40)
                             .font(.title)
                     }
-                    .padding(.top)
+                    .padding(.top,700)
                     
                     
                 }
+                .navigationBarHidden(true)
+
                 
                 
             }
+            .navigationBarHidden(true)
             
 //            .frame(maxWidth: .infinity, maxHeight: .infinity)
 //

@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @StateObject var networkStore = NetworkStore()
+
     var body: some View {
         ZStack{
             Color(hue: 0.656, saturation: 0.431, brightness: 0.547).ignoresSafeArea()
             
-            VStack{
+            VStack(spacing: 150){
                 
                 //VStack for top Icons
-                
-                VStack{
+                VStack(spacing: 20){
                     HStack{
                         Image(systemName: "text.alignleft")
                             .font(.system(size: 48))
@@ -32,25 +34,32 @@ struct MainView: View {
 
                 }
                 
-                //VStack for Labels
-                
-                VStack{
-                    Text("Vavuniya")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 36))
+                if let weatherData = networkStore.weatherData {
+                    //VStack for Labels
+                    VStack(spacing: 20){
+                        Text("\(weatherData.name)")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 36))
+                        
+                        
+                        Text("\(weatherData.description)")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 18))
+                            .padding(.bottom)
+                        
+                        Text("\(weatherData.formattedTemp)°C")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 84))
+                    }
                     
-                    
-                    Text("Clear Sky")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 18))
-                        .padding(.bottom)
-                    
-                    Text("28`C")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 84))
+                    .padding(.bottom)
                 }
                 
-                .padding(.bottom)
+                else{
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+                
                 
                 VStack{
                     HStack(spacing: 50){
@@ -105,12 +114,16 @@ struct MainView: View {
                     }
                     .padding(.leading)
                     .padding(.trailing)
+                    .padding(.bottom)
                 }
 
                 
             }
             
             .padding(.bottom)
+        }
+        .task {
+            await networkStore.fetchData(cityName: "Vavuniya")
         }
     }
 }
